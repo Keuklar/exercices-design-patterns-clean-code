@@ -21,15 +21,20 @@ public class Application {
         return code;
     }
 
-    BUTTON_TYPE get(String code) {
+    static BUTTON_TYPE get(String code) {
         return Stream.of(BUTTON_TYPE.values()).filter(bt -> bt.getCode().equals(code)).findFirst().orElse(null);
     }
 }
 
     public static void main(String args[]) {
         Drawable button;
-        button = createButton(WINDOW_BUTTON);
+        button = createButton(BUTTON_TYPE.get(getParamFromArgs(args)));
         button.draw();
+    }
+
+    private static String getParamFromArgs(String args[]) {
+        System.out.println(args);
+        return "window_button";
     }
 
     private static Drawable createButton(BUTTON_TYPE parameter) {
