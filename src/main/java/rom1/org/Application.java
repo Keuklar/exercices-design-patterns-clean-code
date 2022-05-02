@@ -4,11 +4,15 @@ public class Application {
 
     public static void main(String args[]) {
         String parameter = "a";
+        Drawable button;
         if ("a".equalsIgnoreCase(parameter)) {
-            createWindowsButton().draw();
+            button = createWindowsButton();
         } else if("b".equalsIgnoreCase(parameter)) {
-            createHTMLButton().draw();
+            button = createHTMLButton();
+        } else {
+            throw new IllegalArgumentException("unknown parameter");
         }
+        button.draw();
     }
 
 
