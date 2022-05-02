@@ -5,23 +5,21 @@ public class Application {
     public static void main(String args[]) {
         String parameter = "a";
         Drawable button;
-        if ("a".equalsIgnoreCase(parameter)) {
-            button = createWindowsButton();
-        } else if("b".equalsIgnoreCase(parameter)) {
-            button = createHTMLButton();
-        } else {
-            throw new IllegalArgumentException("unknown parameter");
-        }
+        button = createButton(parameter);
         button.draw();
     }
 
-
-    private static WindowsButton createWindowsButton() {
-        return new WindowsButton();
+    private static Drawable createButton(String parameter) {
+        Drawable button;
+        if ("a".equalsIgnoreCase(parameter)) {
+            button = new WindowsButton();
+        } else if("b".equalsIgnoreCase(parameter)) {
+            button = new HTMLButton();
+        } else {
+            throw new IllegalArgumentException("unknown parameter");
+        }
+        return button;
     }
 
-    private static HTMLButton createHTMLButton() {
-        return new HTMLButton();
-    }
 
 }
