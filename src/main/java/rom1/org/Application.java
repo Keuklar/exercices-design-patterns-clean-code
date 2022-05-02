@@ -11,9 +11,9 @@ public class Application {
 
     private static Drawable createButton(String parameter) {
         Drawable button;
-        if ("a".equalsIgnoreCase(parameter)) {
+        if ("window_button".equalsIgnoreCase(parameter)) {
             button = new WindowsButton();
-        } else if("b".equalsIgnoreCase(parameter)) {
+        } else if("html_button".equalsIgnoreCase(parameter)) {
             button = new HTMLButton();
         } else {
             throw new IllegalArgumentException("unknown parameter");
