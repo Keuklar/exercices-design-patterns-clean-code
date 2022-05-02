@@ -1,5 +1,7 @@
 package rom1.org;
 
+import java.util.stream.Stream;
+
 import static rom1.org.Application.BUTTON_TYPE.HTML_BUTTON;
 import static rom1.org.Application.BUTTON_TYPE.WINDOW_BUTTON;
 
@@ -18,20 +20,23 @@ public class Application {
     public String getCode() {
         return code;
     }
+
+    BUTTON_TYPE get(String code) {
+        return Stream.of(BUTTON_TYPE.values()).filter(bt -> bt.getCode().equals(code)).findFirst().orElse(null);
+    }
 }
 
     public static void main(String args[]) {
-        String parameter = "a";
         Drawable button;
-        button = createButton(parameter);
+        button = createButton(WINDOW_BUTTON);
         button.draw();
     }
 
-    private static Drawable createButton(String parameter) {
+    private static Drawable createButton(BUTTON_TYPE parameter) {
         Drawable button;
-        if (WINDOW_BUTTON.getCode().equalsIgnoreCase(parameter)) {
+        if (WINDOW_BUTTON == parameter) {
             button = new WindowsButton();
-        } else if(HTML_BUTTON.getCode().equalsIgnoreCase(parameter)) {
+        } else if(HTML_BUTTON == parameter) {
             button = new HTMLButton();
         } else {
             throw new IllegalArgumentException("unknown parameter");
