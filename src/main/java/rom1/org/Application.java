@@ -40,9 +40,9 @@ public class Application {
     private static Drawable createButton(BUTTON_TYPE parameter) {
         Drawable button;
         if (WINDOW_BUTTON == parameter) {
-            button = new WindowsButton();
+            button = new WindowsButtonContainer().createButton();
         } else if(HTML_BUTTON == parameter) {
-            button = new HTMLButton();
+            button = new HTMLButtonContainer().createButton();
         } else {
             throw new IllegalArgumentException("unknown parameter");
         }
